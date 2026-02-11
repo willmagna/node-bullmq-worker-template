@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "module": "nodenext",
+    "target": "ES2023",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "rootDirs": ["src"],
+    "strict": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "resolveJsonModule": true,
+    // "baseUrl": "src",
+    "allowJs": true,
+    "paths": {
+      "@/tests/*": ["../tests/*"]
+      // "@/*": ["*"]
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"]
+}

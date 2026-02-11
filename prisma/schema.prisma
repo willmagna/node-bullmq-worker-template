@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model installation_configs {
+  id               Int      @id @default(autoincrement())
+  name             String
+  serialized_value Json
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  @@index([name])
+  @@map("installation_configs")
+}
+
+model audit_log {
+  id          Int                   @id @default(autoincrement())
+  action      audit_log_action
+  entity_name audit_log_entity_name
+  entity_id   Int
+  snapshot    Json
+  metadata    Json?
+  created_at  DateTime              @default(now())
+
+  @@index([entity_name])
+  @@index([entity_id])
+  @@index([entity_name, entity_id])
+  @@map("audit_log")
+}
+
+enum audit_log_action {
+  CREATE
+  UPDATE
+  DELETE
+  ASSIGN
+  UNASSIGN
+}
+
+enum audit_log_entity_name {
+  installation_configs
+  audit_log
+}
