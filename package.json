@@ -10,7 +10,11 @@
     "job-builder": "tsx watch src/jobBuilder.ts",
     "build": "tsc",
     "start": "node -r dotenv/config ./dist/worker.js",
-    "call": "tsx src/makeCall.ts"
+    "db:generate": "yarn prisma generate",
+    "db:seed": "yarn prisma db seed",
+    "db:migrate:dev": "yarn prisma migrate dev --name",
+    "db:migrate:deploy": "yarn prisma migrate deploy",
+    "db:view": "yarn prisma-cli studio"
   },
   "devDependencies": {
     "@types/node": "^24.7.2",
