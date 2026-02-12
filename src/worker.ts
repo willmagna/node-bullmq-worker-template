@@ -8,15 +8,9 @@ import redisClient from './config/redis/redisClient.js';
 
 async function startWorker() {
   /**Redis */
-  await redisClient
-    .connect()
-    .then(async () => {
-      logger.info('Redis connected with success!');
-    })
-    .catch((err: any) => {
-      logger.fatal(err);
-      throw err;
-    });
+  await redisClient.connect().then(async () => {
+    logger.info('Redis connected with success!');
+  });
 
   /**Postgres */
   await PgConnection.getInstance()
